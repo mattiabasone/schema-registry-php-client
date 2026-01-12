@@ -34,6 +34,8 @@ jobs:
             xdebug: '3.5.0'
           - version: '8.4'
             xdebug: '3.5.0'
+          - version: '8.5'
+            xdebug: '3.5.0'
     runs-on: ubuntu-24.04
     steps:
       -
@@ -82,11 +84,15 @@ jobs:
             composer: --prefer-lowest
           - version: '8.4'
             composer: --prefer-lowest
+          - version: '8.5'
+            composer: --prefer-lowest
           - version: '8.2'
             composer: --prefer-stable
           - version: '8.3'
             composer: --prefer-stable
           - version: '8.4'
+            composer: --prefer-stable
+          - version: '8.5'
             composer: --prefer-stable
     steps:
       -
