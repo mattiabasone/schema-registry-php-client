@@ -12,10 +12,7 @@ use Symfony\Component\Cache\Exception\InvalidArgumentException;
 
 class CacheItemPoolAdapter implements CacheAdapter
 {
-    /**
-     * @var CacheItemPoolInterface
-     */
-    private $cacheItemPool;
+    private CacheItemPoolInterface $cacheItemPool;
 
     public function __construct(CacheItemPoolInterface $cacheItemPool)
     {

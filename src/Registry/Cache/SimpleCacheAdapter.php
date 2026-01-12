@@ -12,10 +12,7 @@ use Symfony\Component\Cache\Exception\InvalidArgumentException;
 
 class SimpleCacheAdapter implements CacheAdapter
 {
-    /**
-     * @var CacheInterface $cache
-     */
-    private $cache;
+    private CacheInterface $cache;
 
     public function __construct(CacheInterface $cache)
     {

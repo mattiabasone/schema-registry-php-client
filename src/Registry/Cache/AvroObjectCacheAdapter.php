@@ -15,17 +15,17 @@ class AvroObjectCacheAdapter implements CacheAdapter
     /**
      * @var AvroSchema[]
      */
-    private $idToSchema = [];
+    private array $idToSchema = [];
 
     /**
      * @var int[]
      */
-    private $hashToSchemaId = [];
+    private array $hashToSchemaId = [];
 
     /**
      * @var AvroSchema[]
      */
-    private $subjectVersionToSchema = [];
+    private array $subjectVersionToSchema = [];
 
     /**
      * {@inheritdoc}
