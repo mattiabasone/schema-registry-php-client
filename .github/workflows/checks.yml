@@ -124,11 +124,14 @@ jobs:
         if: ${{ matrix.php.version == '8.2' && matrix.php.composer == '--prefer-stable' }}
         run: |
           chmod a+x bin/php-cs-fixer.phar
+          docker run -i --rm --net=host --sig-proxy=true --pid=host \
+            -v "${GITHUB_WORKSPACE}":"${GITHUB_WORKSPACE}" -w "${GITHUB_WORKSPACE}" schema-registry-client:${{ matrix.php.version }} \
+            pwd && ls -la
           docker run -i --rm --net=host --sig-proxy=true --pid=host -m 1000M --entrypoint="php" \
             -v "${GITHUB_WORKSPACE}":"${GITHUB_WORKSPACE}" -w "${GITHUB_WORKSPACE}" schema-registry-client:${{ matrix.php.version }} \
             -d xdebug.mode=off bin/php-cs-fixer.phar fix --config=.php-cs-fixer.dist.php \
             --diff -v --dry-run --path-mode=intersection --allow-risky=yes \
-            src test && ls -la && pwd
+            src test
       -
         name: Run PHPUnit
         if: ${{ !(matrix.php.version == '8.2' && matrix.php.composer == '--prefer-stable') }}
