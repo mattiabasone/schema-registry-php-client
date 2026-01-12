@@ -8,18 +8,17 @@ CONFLUENT_NETWORK_SUBNET ?= 172.68.0.0/24
 CONFLUENT_NETWORK_GATEWAY ?= 172.68.0.1
 SCHEMA_REGISTRY_IPV4 ?= 172.68.0.103
 KAFKA_BROKER_IPV4 ?= 172.68.0.102
-ZOOKEEPER_IPV4 ?= 172.68.0.101
 COMPOSER ?= bin/composer.phar
-COMPOSER_VERSION ?= 2.1.12
+COMPOSER_VERSION ?= 2.9.3
 COMPOSER_STABILITY ?= --prefer-stable
 PHP_STAN ?= bin/phpstan.phar
-PHP_STAN_VERSION ?= 1.1.2
+PHP_STAN_VERSION ?= 2.1.33
 PHP_CS_FIXER ?= bin/php-cs-fixer.phar
-PHP_CS_FIXER_VERSION ?= 3.2.1
+PHP_CS_FIXER_VERSION ?= 3.92.5
 PHPUNIT ?= vendor/bin/phpunit
 PHP ?= bin/php
-PHP_VERSION ?= 7.4
-XDEBUG_VERSION ?= 3.1.1
+PHP_VERSION ?= 8.2
+XDEBUG_VERSION ?= 3.5.0
 XDEBUG_OPTIONS ?= -d xdebug.mode=off
 export
 
@@ -53,7 +52,7 @@ phpunit:
 
 coverage:
 	mkdir -p build
-	PHP_VERSION=$(PHP_VERSION) $(PHP) -d xdebug.mode=coverage -d xdebug.coverage_enable=1 vendor/bin/phpunit --exclude-group integration \
+	PHP_VERSION=$(PHP_VERSION) $(PHP) -d xdebug.mode=coverage vendor/bin/phpunit --exclude-group integration \
 	  --coverage-clover=build/coverage.clover --coverage-text
 
 ci-local: cs-fixer phpstan phpunit
@@ -70,13 +69,13 @@ install-phars:
 	chmod a+x bin/phpstan.phar
 
 platform:
-	docker-compose down
-	docker-compose up -d
+	docker compose down
+	docker compose up --remove-orphans -d
 	bin/wait-for-all.sh
 
 platform-logs:
-	docker-compose logs -f
+	docker compose logs -f
 
 clean:
 	rm -rf build
-	docker-compose down
+	docker compose down

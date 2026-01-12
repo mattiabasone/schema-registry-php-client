@@ -7,7 +7,7 @@
 [![Total Downloads](https://poser.pugx.org/flix-tech/confluent-schema-registry-api/downloads)](https://packagist.org/packages/flix-tech/confluent-schema-registry-api)
 [![License](https://poser.pugx.org/flix-tech/confluent-schema-registry-api/license)](https://packagist.org/packages/flix-tech/confluent-schema-registry-api)
 
-A PHP 7.4+ library to consume the Confluent Schema Registry REST API. It provides low level functions to create PSR-7
+A PHP 8.2+ library to consume the Confluent Schema Registry REST API. It provides low level functions to create PSR-7
 compliant requests that can be used as well as high level abstractions to ease developer experience.
 
 #### Contents
@@ -31,27 +31,26 @@ compliant requests that can be used as well as high level abstractions to ease d
 
 ### Hard dependencies
 
-| Dependency | Version | Reason |
-|:--- |:---:|:--- |
-| **`php`** | ~7.4 | Anything lower has reached EOL |
-| **`guzzlephp/guzzle`** | ~7.0 | Using `Request` to build PSR-7 `RequestInterface` |
-| **`beberlei/assert`** | ~2.7\|~3.0 | The de-facto standard assertions library for PHP |
-| **`flix-tech/avro-php`** | ^4.1 | Maintained fork of the only Avro PHP implementation: `rg/avro-php` |
+| Dependency             |  Version   | Reason                                            |
+|:-----------------------|:----------:|:--------------------------------------------------|
+| **`php`**              |    ~8.2    | Anything lower has reached EOL                    |
+| **`guzzlephp/guzzle`** |    ~7.0    | Using `Request` to build PSR-7 `RequestInterface` |
+| **`beberlei/assert`**  | ~2.7\|~3.0 | The de-facto standard assertions library for PHP  |
+| **`apache/avro`**      |  dev-main  | Official apache AVRO package                      |
 
 ### Optional dependencies
 
-| Dependency | Version | Reason |
-|:--- |:---:|:--- |
-| **`doctrine/cache`** | ~1.3 | If you want to use the `DoctrineCacheAdapter` |
-| **`psr/cache`** | ^1.0 | If you want to use the `CacheItemPoolAdapter` |
-| **`psr/simple-cache`** | ^1.0 | If you want to use the `SimpleCacheAdapter` |
+| Dependency |   Version   | Reason |
+|:--- |:-----------:|:--- |
+| **`psr/cache`** | ^1.13\|^2.0 | If you want to use the `CacheItemPoolAdapter` |
+| **`psr/simple-cache`** |    ^3.0     | If you want to use the `SimpleCacheAdapter` |
 
 ## Installation
 
 This library is installed via [`composer`](http://getcomposer.org).
 
 ```bash
-composer require "flix-tech/confluent-schema-registry-api=^7.4"
+composer require mattiabasone/confluent-schema-registry-api
 ```
 
 > **NOTE**
@@ -256,7 +255,6 @@ CONFLUENT_VERSION=latest
 CONFLUENT_NETWORK_SUBNET=172.68.0.0/24
 SCHEMA_REGISTRY_IPV4=172.68.0.103
 KAFKA_BROKER_IPV4=172.68.0.102
-ZOOKEEPER_IPV4=172.68.0.101
 ```
 
 ##### Building the confluent platform with a specific version and run the integration tests

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace FlixTech\SchemaRegistryApi\Registry\Cache;
 
-use AvroSchema;
+use Apache\Avro\Schema\AvroSchema;
 use FlixTech\SchemaRegistryApi\Registry\CacheAdapter;
 
 /**
@@ -15,17 +15,17 @@ class AvroObjectCacheAdapter implements CacheAdapter
     /**
      * @var AvroSchema[]
      */
-    private $idToSchema = [];
+    private array $idToSchema = [];
 
     /**
      * @var int[]
      */
-    private $hashToSchemaId = [];
+    private array $hashToSchemaId = [];
 
     /**
      * @var AvroSchema[]
      */
-    private $subjectVersionToSchema = [];
+    private array $subjectVersionToSchema = [];
 
     /**
      * {@inheritdoc}

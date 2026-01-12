@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace FlixTech\SchemaRegistryApi\Registry;
 
-use AvroSchema;
+use Apache\Avro\Schema\AvroSchema;
 use Exception;
 use FlixTech\SchemaRegistryApi\Exception\SchemaRegistryException;
 use FlixTech\SchemaRegistryApi\Registry;
@@ -17,22 +17,16 @@ use function call_user_func;
  */
 class CachedRegistry implements Registry
 {
-    /**
-     * @var Registry
-     */
-    private $registry;
+    private Registry $registry;
 
-    /**
-     * @var CacheAdapter
-     */
-    private $cacheAdapter;
+    private CacheAdapter $cacheAdapter;
 
     /**
      * @var callable
      */
     private $hashAlgoFunc;
 
-    public function __construct(Registry $registry, CacheAdapter $cacheAdapter, callable $hashAlgoFunc = null)
+    public function __construct(Registry $registry, CacheAdapter $cacheAdapter, ?callable $hashAlgoFunc = null)
     {
         $this->registry = $registry;
         $this->cacheAdapter = $cacheAdapter;
