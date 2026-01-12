@@ -255,7 +255,6 @@ CONFLUENT_VERSION=latest
 CONFLUENT_NETWORK_SUBNET=172.68.0.0/24
 SCHEMA_REGISTRY_IPV4=172.68.0.103
 KAFKA_BROKER_IPV4=172.68.0.102
-ZOOKEEPER_IPV4=172.68.0.101
 ```
 
 ##### Building the confluent platform with a specific version and run the integration tests

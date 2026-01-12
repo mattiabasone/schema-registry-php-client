@@ -8,7 +8,6 @@ CONFLUENT_NETWORK_SUBNET ?= 172.68.0.0/24
 CONFLUENT_NETWORK_GATEWAY ?= 172.68.0.1
 SCHEMA_REGISTRY_IPV4 ?= 172.68.0.103
 KAFKA_BROKER_IPV4 ?= 172.68.0.102
-ZOOKEEPER_IPV4 ?= 172.68.0.101
 COMPOSER ?= bin/composer.phar
 COMPOSER_VERSION ?= 2.9.3
 COMPOSER_STABILITY ?= --prefer-stable
@@ -71,7 +70,7 @@ install-phars:
 
 platform:
 	docker compose down
-	docker compose up -d
+	docker compose up --remove-orphans -d
 	bin/wait-for-all.sh
 
 platform-logs:

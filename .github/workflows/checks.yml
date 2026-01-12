@@ -161,9 +161,8 @@ jobs:
       matrix:
         confluent:
           - version: latest
-          - version: 4.1.4
-          - version: 5.5.2
           - version: 6.2.15
+          - version: 7.7.7
           - version: 8.0.3
     steps:
       -
