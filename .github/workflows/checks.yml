@@ -128,7 +128,7 @@ jobs:
             -v "${GITHUB_WORKSPACE}":"${GITHUB_WORKSPACE}" -w "${GITHUB_WORKSPACE}" schema-registry-client:${{ matrix.php.version }} \
             -d xdebug.mode=off bin/php-cs-fixer.phar fix --config=.php-cs-fixer.dist.php \
             --diff -v --dry-run --path-mode=intersection --allow-risky=yes \
-            src test
+            src test && ls -la && pwd
       -
         name: Run PHPUnit
         if: ${{ !(matrix.php.version == '8.2' && matrix.php.composer == '--prefer-stable') }}
