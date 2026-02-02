@@ -22,7 +22,7 @@
     "guzzlehttp/promises": "^2.0.0",
     "guzzlehttp/psr7": "^2.4",
     "beberlei/assert": "~2.7|~3.0",
-    "apache/avro": "dev-main"
+    "apache/avro": "dev-main#c499eefb48aa2db906c7bca14a047223806f36db"
   },
   "require-dev": {
     "phpunit/phpunit": "^10.5",
